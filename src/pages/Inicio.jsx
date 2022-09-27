@@ -6,14 +6,14 @@ import AlumnoList from "../components/alumnosList";
 const Inicio = () => {
     const  {grupo, alumnos, estadisticas}  = useSelector(state => state.group.init);
     const dispatch = useDispatch();
-   console.log(alumnos)
     useEffect(() =>{
         dispatch(fetchData());
     },[]);
 
     return (
         <>
-            <AlumnoList/>
+            <p>{grupo.descripcion}</p>
+            <AlumnoList alumnos={alumnos}/>
         </>
     );
 };
