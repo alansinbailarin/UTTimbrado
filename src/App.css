@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800;900&display=swap');
 /* tailwind */
 @tailwind base;
 @tailwind components;
@@ -16,7 +16,7 @@ body {
 
 .container {
     display:flex;
-    background-color: #f3f1f1;
+    background-color: #f8f8f8;
 }
 
 main {
@@ -41,49 +41,54 @@ main {
 }
 
 .logo {
-    font-size: 30px;
-    font-weight: 800;
-    color: white;
+    font-size: 20px;
+    font-weight: 900;
+    color: #631433;
     font-style: italic;
 }
 
 .bars {
     display: flex;
-    color: red;
+    color: gray;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 25px;
     margin-left: 50px;
 }
 
 .link {
     display: flex;
-    font-size: 12px;
-    color: rgb(231, 228, 228);
-    padding: 10px 15px;
-    gap: 15px;
+    color: gray;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 6px;
+    gap: 10px;
     transition: all 0.5s;
-    font-weight: bold;
 }
 
 .link:hover {
-    background:rgb(240, 240, 240);
-    color: #631433;
+    background: #f3f3fd;
+    color: #677eff;
     transition: all 0.5s;
 }
 
 .active {
-    background: rgb(236, 236, 236);
-    margin: 10px;
-    border-radius: 7px;
-    color: #631433;
+    background: #f3f3fd;
+    color: #677eff;
 }
 
-.icon, .link_text {
-    font-size: 16px;
+.icon {
+    font-size: 20px;
+}
+
+.link_text {
+    font-size: 14px;
+    font-weight: 600;
+    padding-top: 4px;
 }
 
 .navbar {
     padding: 1rem;
-    background-color: #212121;
+    background-color: white;
+    border-bottom: 0.5px solid rgb(236, 236, 236);
 }
 

@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import {
-    FaTh,
-    FaBars,
-    FaUserAlt,
-     
-    FaUsers
-} from "react-icons/fa";
+    BiBarChart,
+    BiMenu,
+    BiUser,
+    BiGroup
+} from "react-icons/bi";
 import { NavLink } from 'react-router-dom';
 
 
@@ -16,25 +15,26 @@ const Sidebar = ({children}) => {
         {
             path:"/",
             name:"Inicio",
-            icon:<FaTh/>
+            icon:<BiBarChart/>
         },
         {
             path:"/alumnos",
             name:"Alumnos",
-            icon:<FaUserAlt/>
+            icon:<BiUser/>
         },
         {
             path:"/grupo",
             name:"Grupos",
-            icon:<FaUsers/>
+            icon:<BiGroup/>
         },
     ]
     return (
         <div className="container">
-           <div style={{width: isOpen ? "200px" : "50px"}} className="sidebar">
+           <div style={{width: isOpen ? "200px" : "60px"}} className="sidebar">
                <div className="top_section">
-                   <div style={{marginLeft: isOpen ? "50px" : "0px"}} className="bars">
-                       <FaBars onClick={toggle}/>
+                   <h1 style={{display: isOpen ? "block" : "none"}} className="logo">UTT</h1>
+                   <div style={{marginLeft: isOpen ? "50px" : "4px"}} className="bars">
+                       <BiMenu onClick={toggle}/>
                    </div>
                </div>
                {
