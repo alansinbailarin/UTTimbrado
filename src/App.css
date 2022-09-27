@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800;900&display=swap');
 /* tailwind */
 @tailwind base;
 @tailwind components;
@@ -16,7 +16,7 @@ body {
 
 .container {
     display:flex;
-    background-color: #eeeeee;
+    background-color: #f8f8f8;
 }
 
 main {
@@ -41,8 +41,8 @@ main {
 }
 
 .logo {
-    font-size: 30px;
-    font-weight: 800;
+    font-size: 20px;
+    font-weight: 900;
     color: #631433;
     font-style: italic;
 }
@@ -51,38 +51,44 @@ main {
     display: flex;
     color: gray;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 25px;
     margin-left: 50px;
 }
 
 .link {
     display: flex;
-    font-size: 12px;
-    color: rgb(231, 228, 228);
+    color: gray;
     padding: 10px;
     margin: 10px;
-    gap: 15px;
+    border-radius: 6px;
+    gap: 10px;
     transition: all 0.5s;
-    font-weight: bold;
 }
 
 .link:hover {
-    background: #ffedf4;
-    color: #631433;
+    background: #f3f3fd;
+    color: #677eff;
     transition: all 0.5s;
 }
 
 .active {
-    background: #ffedf4;
-    color: #631433;
+    background: #f3f3fd;
+    color: #677eff;
 }
 
-.icon, .link_text {
-    font-size: 16px;
+.icon {
+    font-size: 20px;
+}
+
+.link_text {
+    font-size: 14px;
+    font-weight: 600;
+    padding-top: 4px;
 }
 
 .navbar {
     padding: 1rem;
-    background-color: #212121;
+    background-color: white;
+    border-bottom: 0.5px solid rgb(236, 236, 236);
 }
 
