@@ -20,7 +20,7 @@ const App = () => {
           <Route path="/grupo" element={<Grupo />} />
         </Routes>
       </Sidebar>
-    </BrowserRouter>
+    </BrowserRouter>  
   );
 };
 
