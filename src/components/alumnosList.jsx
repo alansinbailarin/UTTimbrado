@@ -50,7 +50,7 @@ const AlumnoList = props => {
       return (
         <div className="flex items-center">
           {/* <MdChevronLeft onClick={handlePreviousClick} size={40}/> */}
-          <div className="bg-gray-200 relative w-full flex items-center justify-center overflow-hidden">
+          <div className="bg-white border border-gray-150 rounded-xl relative w-full flex items-center justify-center overflow-hidden">
               <div className="relative items-center w-[16rem] h-[13.5rem]">
                   <ul className="transition-transform	duration-[600ms] flex absolute">
                       {/* {alumnos.map((alumno, i) => {
