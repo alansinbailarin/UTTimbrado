@@ -6,10 +6,12 @@ import Dashboard from './pages/Inicio.jsx';
 import Inicio from './pages/Inicio.jsx';
 import Alumnos from './pages/Alumnos.jsx';
 import Grupo from './pages/Grupo.jsx';
+import Navbar from './components/Navbar';
 
 const App = () => {
   return (
     <BrowserRouter>
+    <Navbar/>
       <Sidebar>
         <Routes>
           <Route path="/" element={<Dashboard />} />
