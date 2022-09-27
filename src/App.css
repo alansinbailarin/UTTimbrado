@@ -16,7 +16,7 @@ body {
 
 .container {
     display:flex;
-    background-color: #121212;
+    background-color: #f3f1f1;
 }
 
 main {
@@ -25,11 +25,13 @@ main {
 }
 
 .sidebar {
-    background: #212121;
+    background: white;
     color: black;
     height: 100vh;
     width: 200px;
     transition: all 0.5s;
+    border-right: 0.5px solid rgb(236, 236, 236);
+
 }
 
 .top_section {
@@ -47,7 +49,7 @@ main {
 
 .bars {
     display: flex;
-    color: white;
+    color: red;
     cursor: pointer;
     font-size: 20px;
     margin-left: 50px;
@@ -71,6 +73,8 @@ main {
 
 .active {
     background: rgb(236, 236, 236);
+    margin: 10px;
+    border-radius: 7px;
     color: #631433;
 }
 
