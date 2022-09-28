@@ -2,41 +2,42 @@ import React, { useState } from "react";
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md'
 import AlumnoCard from './alumnoCard';
 
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAlumn } from "../resources/fetch";
+
 const AlumnoList = props => {
   const  { alumnos } = props;
   const [current, setCurrent] = useState(0);
+  const dispatch = useDispatch();
   const wrapperTransform = {
     'transform': `translateX(-${current * (100 / alumnos.length)}%)`,
   }
+  
+  const getMatricula = x =>{
+    console.log(x)
+    dispatch(fetchAlumn(alumnos[x].matricula));
+  }
     
   const handlePreviousClick = () => {
-    const previous = current - 1
-    setCurrent((previous < 0) 
-        ? alumnos.length - 1
-        : previous
-    )
+    let previous = current - 1
+    previous = (previous < 0)?alumnos.length - 1:previous
+    setCurrent( previous)
+    getMatricula(previous)
   }
   
   const handleNextClick = () =>  {
-    const next = current + 1;
-    setCurrent((next === alumnos.length) 
-        ? 0
-        : next
-    )
+    let next = current + 1;
+    next = (next === alumnos.length) ? 0 : next
+    setCurrent(next)
+    getMatricula(next)
   }
   
-  const handleSlideClick = (index, matricula) =>  {
+  const handleSlideClick = (index) =>  {
     if (current !== index) {
       setCurrent(index)
+      getMatricula(index)
     }
   }  
-
-    // // const getMatricula = () =>{
-    // //   if(  alumnos[current] !== undefined ){
-    // //     console.log(alumnos[current])
-    // //     dispatch(fetchAlumn(alumnos[current].matricula));
-    // //   }    
-    // // }
 
   return (
     <div className="flex items-center">
