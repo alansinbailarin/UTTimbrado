@@ -11,7 +11,7 @@ const AlumnoCard = props => {
   else if (current + 1 === index) classNames += ' slide--next' 
   
   const handleSlideClick = () => {
-    props.handleSlideClick(index,matricula)
+    props.handleSlideClick(index)
   }
     
   const imageLoaded = (event) => {
