@@ -40,9 +40,10 @@ const AlumnoList = props => {
   }  
 
   return (
-    <div className="fle items-center px-6 md:px-10">
-      <div className="bg-white border border-gray-150 rounded-xl relative w-full flex items-center justify-center overflow-hidden">
+    <div className="flex items-center bg-white border border-gray-150 rounded-xl">
       <MdChevronLeft className="cursor-pointer text-gray-300 hover:bg-gray-100 rounded-full ease-out duration-300" onClick={handlePreviousClick} size={40}/>
+      <div className=" relative w-full flex items-center justify-center overflow-hidden">
+      
         <div className="relative items-center w-[16rem] h-[13.5rem]">
           <ul className="transition-transform	duration-[600ms] flex absolute" style={wrapperTransform}>
             {alumnos.map((alumno, i) => {
@@ -58,8 +59,9 @@ const AlumnoList = props => {
             })}
           </ul>
         </div>
-        <MdChevronRight className="cursor-pointer text-gray-300 hover:bg-gray-100 rounded-full ease-out duration-300" onClick={handleNextClick} size={40}/>
+        
       </div>
+      <MdChevronRight className="cursor-pointer text-gray-300 hover:bg-gray-100 rounded-full ease-out duration-300" onClick={handleNextClick} size={40}/>
     </div>
   )     
 }
