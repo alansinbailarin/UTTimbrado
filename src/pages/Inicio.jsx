@@ -18,7 +18,7 @@ const Inicio = () => {
             <p>{grupo.descripcion}</p>
             <AlumnoList alumnos={alumnos}/>
             
-            <div className="bg-white">
+            <div className="px-6 my-6 md:px-10">
                 <img className="h-60 w-48 object-cover" src={alumno.foto}/>
                 <p>{alumno.matricula}</p>
                 <p>{alumno.nombreCompleto}</p>
