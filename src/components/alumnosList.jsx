@@ -10,7 +10,7 @@ const AlumnoList = props => {
   const [current, setCurrent] = useState(0);
   const dispatch = useDispatch();
   const wrapperTransform = {
-    'transform': `translateX(-${current * (100 / alumnos.length)}%)`,
+    'transform': `translateX(-${current * (50 / alumnos.length)}%)`,
   }
   
   const getMatricula = x =>{

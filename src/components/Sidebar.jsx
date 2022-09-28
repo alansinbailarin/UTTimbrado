@@ -30,12 +30,12 @@ const Sidebar = ({children}) => {
     ]
     return (
         <div className="container-main">
-           <div style={{width: isOpen ? "200px" : "60px"}} className="sidebar">
+           <div style={{width: isOpen ? "200px" : "60px"}} className="sidebar" id="collapsed">
                <div className="top_section">
                    <h1 style={{display: isOpen ? "block" : "none"}} className="logo">UTT</h1>
-                   <div style={{marginLeft: isOpen ? "50px" : "4px"}} className="bars">
+                   <button style={{marginLeft: isOpen ? "50px" : "4px"}} className="bars">
                        <BiMenu onClick={toggle}/>
-                   </div>
+                   </button>
                </div>
                {
                    menuItem.map((item, index)=>(
