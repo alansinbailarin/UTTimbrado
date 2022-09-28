@@ -29,7 +29,7 @@ const Sidebar = ({children}) => {
         },
     ]
     return (
-        <div className="container">
+        <div className="container-main">
            <div style={{width: isOpen ? "200px" : "60px"}} className="sidebar">
                <div className="top_section">
                    <h1 style={{display: isOpen ? "block" : "none"}} className="logo">UTT</h1>
