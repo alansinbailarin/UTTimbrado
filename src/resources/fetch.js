@@ -12,7 +12,7 @@ export const fetchData = () => dispatch =>{
 }
 
 export const fetchAlumn = (matricula) => async (dispatch) =>{
-    await fetch(`http://localhost:8081/alumno/${matricula}`)
+    await fetch(`http://www.proyectoalumno.somee.com/Alumn/GetAlumno?matricula=${matricula}`)
     .then( response =>response.json() )
     .then( response =>{
         dispatch(setAlumno(response));

@@ -101,7 +101,7 @@ main {
     background-color: white;
     border-bottom: 0.5px solid rgb(236, 236, 236);
     display: flex;
-    position: relative;
+    justify-content: space-between;
 }
 
 .navbar input {

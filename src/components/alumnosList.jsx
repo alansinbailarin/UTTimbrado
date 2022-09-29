@@ -40,7 +40,7 @@ const AlumnoList = props => {
   }  
 
   return (
-    <div className="mx-6 md:mx-10 flex items-center bg-white border border-gray-150 rounded-xl">
+    <div className="flex my-3 items-center bg-white border border-gray-150 rounded-xl">
       <MdChevronLeft className="cursor-pointer text-gray-300 hover:bg-gray-100 rounded-full ease-out duration-300" onClick={handlePreviousClick} size={40}/>
       <div className=" relative w-full flex items-center justify-center overflow-hidden">
         <div className="relative items-center w-[16rem] h-[13.5rem]">

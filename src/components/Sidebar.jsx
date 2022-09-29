@@ -14,7 +14,7 @@ const Sidebar = ({children}) => {
     const menuItem=[
         {
             path:"/",
-            name:"Inicio",
+            name:"Dashboard",
             icon:<BiBarChart/>
         },
         {
@@ -30,13 +30,14 @@ const Sidebar = ({children}) => {
     ]
     return (
         <div className="container-main">
-           <div style={{width: isOpen ? "200px" : "60px"}} className="sidebar" id="collapsed">
+           <div style={{width: isOpen ? "200px" : "60px" }} className="sidebar" id="collapsed">
                <div className="top_section">
                    <h1 style={{display: isOpen ? "block" : "none"}} className="logo">UTT</h1>
                    <button style={{marginLeft: isOpen ? "50px" : "4px"}} className="bars">
                        <BiMenu onClick={toggle}/>
                    </button>
                </div>
+               <div className="content">
                {
                    menuItem.map((item, index)=>(
                        <NavLink to={item.path} key={index} className="link" >
@@ -45,6 +46,7 @@ const Sidebar = ({children}) => {
                        </NavLink>
                    ))
                }
+               </div>
            </div>
            <main>{children}</main>
         </div>
