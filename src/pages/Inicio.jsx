@@ -71,9 +71,10 @@ const Inicio = () => {
             )
           })}          
         </div>
+        {/* estado civil e ingresos*/}
         <div className="flex">
           {/* estado civil ok*/}
-          <div className="md:flex md:justify-between bg-gray-200 rounded-xl border border-gray-50 py-6 md:p-6 md:text-left mb-4">
+          <div className="md:flex md:justify-between bg-gray-200 rounded-xl border border-gray-50 py-6 md:p-6 md:text-left mb-4 w-1/2">
             {estadisticas.datosPersonales.estadoCivil.map(ec => {
               return(
                 <div>
@@ -84,7 +85,7 @@ const Inicio = () => {
             })}          
           </div>
           {/* Ingresos*/}
-          <div className="bg-gray-200 rounded-xl border border-gray-50 py-6 md:p-6 md:text-left mb-4">
+          <div className="bg-gray-200 rounded-xl border border-gray-50 py-6 md:p-6 md:text-left mb-4 w-1/2">
             <h1>Ingresos</h1>
             <Chart data={estadisticas.datosPersonales.ingresosFamiliares}/>
           </div>
