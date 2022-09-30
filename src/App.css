@@ -35,7 +35,7 @@ main {
 .sidebar {
     background: white;
     color: black;
-    height: 100vh;
+    height: 250vh;
     width: 200px;
     transition: all 0.5s;
     border-right: 0.5px solid rgb(236, 236, 236);

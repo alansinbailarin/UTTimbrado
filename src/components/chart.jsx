@@ -23,8 +23,6 @@ ChartJS.register(
   Legend
 );
 
-
-
 const Chart = props => {
     const options = {
         responsive: true,
