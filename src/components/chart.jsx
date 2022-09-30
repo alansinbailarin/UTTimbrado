@@ -27,30 +27,36 @@ ChartJS.register(
 
 const Chart = props => {
     const options = {
-        responsive: true,
-        plugins: {
-          legend: {
-            display: false
-          },
-          title: {
-            display: false,
-          },
+      responsive: true,
+      plugins: {
+        legend: {
+          display: false
         },
-      };
+        title: {
+          display: false,
+        },
+      },
+    };
+    
+    var dataXProps =[],dataYProps =[];
+    props.data.map(data=>{
+      dataXProps.push(data.descripcion)
+      dataYProps.push(data.cantidad)
+    }); 
+
+    const labels = dataXProps;
       
-      const labels = props.index;
-      
-      const data = {
-        labels,
-        datasets: [
-          {
-            fill: true,
-            data: props.data,
-            borderColor: props.border || 'rgb(53, 162, 235)' ,
-            backgroundColor:props.bg || 'rgba(53, 162, 235, 0.5)',
-          },
-        ],
-      };
+    const data = {
+      labels,
+      datasets: [
+        {
+          fill: true,
+          data: dataYProps,
+          borderColor: props.border || 'rgb(53, 162, 235)' ,
+          backgroundColor:props.bg || 'rgba(53, 162, 235, 0.5)',
+        },
+      ],
+    };
   return <Line options={options} data={data} />;
 }
 
