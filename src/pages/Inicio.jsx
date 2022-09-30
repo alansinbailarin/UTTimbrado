@@ -6,14 +6,18 @@ import {
     FaTransgender
 } from "react-icons/fa";
 
+import Chart from "../components/chart";
+
 const Inicio = () => {
-    
+    const index = [1,2,3,4]
+    const data = [6.7,8.2,5.5,7.4]
     return (
         <div className="px-6 md:px-10">
-<<<<<<< HEAD
             <h1 className="text-blue-500 font-bold ">Dashboard</h1>
-=======
-               <h2 className="text-base font-bold">Genero</h2>
+            <h2 className="text-base font-bold">Genero</h2>
+
+            {/* <Chart index={index} data={data} border={} bg={}/> */}
+            <Chart index={index} data={data}/>
       <div
         className="flex justify-between mt-4 space-y-3 mb-8 flex-col md:flex-row md:space-x-4 md:space-y-0 md:mb-14"
       >
@@ -220,7 +224,6 @@ const Inicio = () => {
             </svg>
           </div>
         </div>
->>>>>>> 6d3cb5c022f36a838ef6b4a3ee9918fa5f161422
         </div>
     )
 }
