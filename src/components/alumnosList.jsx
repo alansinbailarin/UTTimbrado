@@ -10,11 +10,10 @@ const AlumnoList = props => {
   const [current, setCurrent] = useState(0);
   const dispatch = useDispatch();
   const wrapperTransform = {
-    'transform': `translateX(-${current * (50 / alumnos.length)}%)`,
+    'transform': `translateX(-${current * (100 / alumnos.length)}%)`,
   }
   
   const getMatricula = x =>{
-    console.log(x)
     dispatch(fetchAlumn(alumnos[x].matricula));
   }
     
@@ -40,9 +39,10 @@ const AlumnoList = props => {
   }  
 
   return (
-    <div className="flex my-3 items-center bg-white border border-gray-150 rounded-xl">
+    <div className="flex items-center bg-white border border-gray-150 rounded-xl">
       <MdChevronLeft className="cursor-pointer text-gray-300 hover:bg-gray-100 rounded-full ease-out duration-300" onClick={handlePreviousClick} size={40}/>
-      <div className=" relative w-full flex items-center justify-center overflow-hidden">
+      <div className="relative w-full flex items-center justify-center overflow-hidden">
+      
         <div className="relative items-center w-[16rem] h-[13.5rem]">
           <ul className="transition-transform	duration-[600ms] flex absolute" style={wrapperTransform}>
             {alumnos.map((alumno, i) => {
@@ -58,6 +58,7 @@ const AlumnoList = props => {
             })}
           </ul>
         </div>
+        
       </div>
       <MdChevronRight className="cursor-pointer text-gray-300 hover:bg-gray-100 rounded-full ease-out duration-300" onClick={handleNextClick} size={40}/>
     </div>
