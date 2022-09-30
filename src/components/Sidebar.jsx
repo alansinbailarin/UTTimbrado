@@ -30,7 +30,7 @@ const Sidebar = ({children}) => {
     ]
     return (
         <div className="container-main">
-           <div style={{width: isOpen ? "200px" : "60px" }} className="sidebar" id="collapsed">
+           <div style={{width: isOpen ? "200px" : "60px"}} className="sidebar" id="collapsed">
                <div className="top_section">
                    <h1 style={{display: isOpen ? "block" : "none"}} className="logo">UTT</h1>
                    <button style={{marginLeft: isOpen ? "50px" : "4px"}} className="bars">
