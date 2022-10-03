@@ -101,7 +101,23 @@ main {
     background-color: white;
     border-bottom: 0.5px solid rgb(236, 236, 236);
     display: flex;
-    justify-content: space-between;
+}
+
+.dropdown {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border: 1pr solid gray;
+}
+
+.dropdown:empry {
+    border: none;
+}
+
+.dropdown-row {
+    cursor: pointer;
+    text-align: center;
+    margin: 2px 0;
 }
 
 .navbar input {
