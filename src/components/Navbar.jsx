@@ -1,10 +1,10 @@
 import React from "react"
+import SearchBar from "./SearchBar"
 
 const Navbar = () => {
     return (
         <div className="navbar">
-            <input className="search-input w-full md:w-1/2" id="search-alumn" type="search" placeholder="Escribe un nombre..."/>
-            
+            <SearchBar/>
         </div>
     )
 }
