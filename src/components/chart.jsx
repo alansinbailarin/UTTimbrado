@@ -23,8 +23,6 @@ ChartJS.register(
   Legend
 );
 
-
-
 const Chart = props => {
     const options = {
       responsive: true,
@@ -37,21 +35,24 @@ const Chart = props => {
         },
       },
     };
-    
-    var dataXProps =[],dataYProps =[];
-    props.data.map(data=>{
-      dataXProps.push(data.descripcion)
-      dataYProps.push(data.cantidad)
-    }); 
 
-    const labels = dataXProps;
+    // console.log(props.dataY)
+    
+  //   var dataXProps =[],dataYProps =[];
+  //   props.data.map(data=>{
+  //     dataXProps.push(data.descripcion)
+  //     dataYProps.push(data.cantidad)
+  //   }); 
+
+    const labels = props.dataY;
+    console.log(labels)
       
     const data = {
       labels,
       datasets: [
         {
           fill: true,
-          data: dataYProps,
+          data: props.dataX,
           borderColor: props.border || 'rgb(53, 162, 235)' ,
           backgroundColor:props.bg || 'rgba(53, 162, 235, 0.5)',
         },
