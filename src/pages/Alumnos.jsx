@@ -2,11 +2,16 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import AlumnoList from "../components/alumnosList";
 import AlumnoInfo from "../components/AlumnoInfo";
+import { fetchData } from "../resources/fetch";
 
 const Alumnos = () => {
   const dispatch = useDispatch();
   const { grupo, alumnos } = useSelector((state) => state.group.init);
   let alumno = useSelector((state) => state.alumno.alumn);
+
+  useEffect(() => {
+    dispatch(fetchData());
+  }, []);
 
   return (
     <>

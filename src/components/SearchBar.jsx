@@ -27,35 +27,39 @@ const SearchBar = () => {
       />
       <button
         onClick={() => onSearch(value)}
-        className="ml-2 px-6 py-2 bg-blue-500 rounded-md  text-white font-semibold">
+        className="ml-2 px-6 py-2 bg-blue-500 rounded-md  text-white font-semibold"
+      >
         Buscar
       </button>
-      {value === "" ?(
-        false 
+      {value === "" ? (
+        false
       ) : (
-        
         <div className="dropdown w-60 shadow-md bg-white transition ease-in-out delay-150 absolute overflow-auto mt-10 text-sm text-gray-500">
-        {alumnos
-          .filter((alumno) => {
-            const searchTerm = value.toLowerCase();
-            const matricula = alumno.matricula;
-            const nombre = alumno.nombreCompleto;
+          {alumnos
+            .filter((alumno) => {
+              const searchTerm = value.toLowerCase();
+              const matricula = alumno.matricula;
+              const nombre = alumno.nombreCompleto;
 
-            return (
-              nombre.toLowerCase().search(searchTerm) != -1 ||
-              matricula.toLowerCase().search(searchTerm) != -1
-            );
-          })
-          .slice(0, 10)
-          .map((alumno) => (
-            <div
-              onClick={() => onSearch(alumno.matricula)}
-              className="border py-2 px-4 border-gray-50 cursor-pointer hover:bg-gray-50"
-              key={alumno.matricula}>
-              <a href="#">{alumno.nombreCompleto}<p className="text-gray-300">{alumno.matricula}</p></a>
-            </div>
-          ))}
-      </div>
+              return (
+                nombre.toLowerCase().search(searchTerm) != -1 ||
+                matricula.toLowerCase().search(searchTerm) != -1
+              );
+            })
+            .slice(0, 3)
+            .map((alumno) => (
+              <div
+                onClick={() => onSearch(alumno.matricula)}
+                className="border py-2 px-4 border-gray-50 cursor-pointer hover:bg-gray-50"
+                key={alumno.matricula}
+              >
+                <a href="#">
+                  {alumno.nombreCompleto}
+                  <p className="text-gray-300">{alumno.matricula}</p>
+                </a>
+              </div>
+            ))}
+        </div>
       )}
     </div>
   );
