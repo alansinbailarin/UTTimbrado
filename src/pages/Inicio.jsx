@@ -28,13 +28,9 @@ const Inicio = () => {
     return (
       <div className="px-6 md:px-10">
         <h1 className="text-blue-500 font-bold ">Dashboard</h1>
-        <h1 className="text-gray-400">Datos personales</h1>
         {/* genero ok */}
-        <div className="flex flex-col mt-4 mb-4">
-          <h1 className="font-bold text-base text-gray-400 pl-4 md:pl-10">
-            Genero
-          </h1>
-          <div className="flex md:justify-between">
+        <div className="flex flex-col">
+          <div className="mt-4 grid gap-2 md:grid-cols-2">
             {estadisticas.datosPersonales.genero.map((gender, index) => {
               {
                 if (gender.descripcionGenero == "Masculino") {
@@ -110,9 +106,9 @@ const Inicio = () => {
         </div>
 
         {/* estado civil e ingresos*/}
-        <div className="flex">
+        <div className="mt-4 grid gap-2 md:grid-cols-2">
           {/* estado civil ok*/}
-          <div className="md:flex flex-col bg-gray-200 rounded-xl border border-gray-50 py-6 md:p-6 md:text-left mb-4 w-1/2">
+          <div className="md:flex flex-col bg-white rounded-xl border border-gray-200 py-6 md:p-6 md:text-left mb-4">
             <h1 className="font-bold text-base text-gray-400 pl-4 md:pl-10">
               Estado civil
             </h1>
@@ -132,7 +128,7 @@ const Inicio = () => {
             </div>
           </div>
           {/* Ingresos*/}
-          <div className="bg-gray-200 rounded-xl border border-gray-50 py-6 md:p-6 md:text-left mb-4 w-1/2">
+          <div className="bg-white rounded-xl border border-gray-200 py-6 md:p-6 md:text-left mb-4">
             <h1 className="font-bold text-base text-gray-400 pl-4 md:pl-10">
               Ingresos
             </h1>

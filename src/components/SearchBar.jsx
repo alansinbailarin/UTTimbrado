@@ -22,15 +22,19 @@ const SearchBar = () => {
         type="search"
         placeholder="Escribe un nombre..."
         value={value}
+        autoComplete="off"
         onChange={onChange}
       />
       <button
         onClick={() => onSearch(value)}
-        className="ml-2 px-6 py-2 bg-blue-500 rounded-md  text-white font-semibold"
-      >
+        className="ml-2 px-6 py-2 bg-blue-500 rounded-md  text-white font-semibold">
         Buscar
       </button>
-      <div className="dropdown">
+      {value === "" ?(
+        false 
+      ) : (
+        
+        <div className="dropdown w-60 shadow-md bg-white transition ease-in-out delay-150 absolute overflow-auto mt-10 text-sm text-gray-500">
         {alumnos
           .filter((alumno) => {
             const searchTerm = value.toLowerCase();
@@ -46,13 +50,13 @@ const SearchBar = () => {
           .map((alumno) => (
             <div
               onClick={() => onSearch(alumno.matricula)}
-              className="dropdown-row"
-              key={alumno.matricula}
-            >
-              {alumno.nombreCompleto}
+              className="border py-2 px-4 border-gray-50 cursor-pointer hover:bg-gray-50"
+              key={alumno.matricula}>
+              <a href="#">{alumno.nombreCompleto}<p className="text-gray-300">{alumno.matricula}</p></a>
             </div>
           ))}
       </div>
+      )}
     </div>
   );
 };

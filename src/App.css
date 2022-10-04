@@ -109,7 +109,7 @@ main {
   border: 1pr solid gray;
 }
 
-.dropdown:empry {
+.dropdown:empty {
   border: none;
 }
 
