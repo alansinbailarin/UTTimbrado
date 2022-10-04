@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { IoIosMan, IoIosWoman } from "react-icons/io";
 import { FaTransgender } from "react-icons/fa";
 import Chart from "../components/chart";
@@ -15,11 +14,7 @@ const Inicio = () => {
     dataXBachi = [],
     dataYBachi = [],
     dataXTBachi = [],
-    dataYTBachi = [],
-    dataXTsu = [],
-    dataYTsu = [],
-    dataXIng = [],
-    dataYIng = [];
+    dataYTBachi = [];
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -291,5 +286,3 @@ const Inicio = () => {
 };
 
 export default Inicio;
-=======
->>>>>>> ff452fb4c7b496ca76637f4fea1c0bf6df9a658a
