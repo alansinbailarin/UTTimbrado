@@ -74,19 +74,19 @@ const AlumnoInfo = (props) => {
                                 </span>
                             </li>
                             <li className="flex items-center py-3 text-sm">
-                                <span>Fecha</span>
+                                <span className="font-semibold">Fecha</span>
                                 <span className="ml-auto">{formatDate(data.datosPersonales.fechaDeNacimiento)}</span>
                             </li>
                             <li className="flex items-center py-3 text-sm">
-                                <span>Edad</span>
+                                <span className="font-semibold">Edad</span>
                                 <span className="ml-auto">{data.datosPersonales.edad} años</span>
                             </li>
                             <li className="flex items-center py-3 text-sm">
-                                <span>Genero</span>
+                                <span className="font-semibold">Genero</span>
                                 <span className="ml-auto">{data.datosPersonales.genero.descripcion}</span>
                             </li>
                             <li className="flex items-center py-3 text-sm">
-                                <span>Estado civil</span>
+                                <span className="font-semibold">Estado civil</span>
                                 <span className="ml-auto">{data.datosPersonales.estadoCivil.descripcion}</span>
                             </li>
                         </ul>
