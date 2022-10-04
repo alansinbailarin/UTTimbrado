@@ -1,126 +1,292 @@
-import { IoIosMan,IoIosWoman } from "react-icons/io";
+import { IoIosMan, IoIosWoman } from "react-icons/io";
 import { FaTransgender } from "react-icons/fa";
 import Chart from "../components/chart";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchData } from "../resources/fetch";
+import { cuatrimestresTsu, cuatrimestresIng } from "../components/AlumnoInfo";
 
 const Inicio = () => {
-    const  {estadisticas}  = useSelector(state => state.group.init);
-    var color, icon;
-    const dispatch = useDispatch();
-    useEffect(() =>{
-        dispatch(fetchData());
-    },[]);
+  const { estadisticas } = useSelector((state) => state.group.init);
+  var color, icon;
+  var dataX = [],
+    dataY = [],
+    dataXBachi = [],
+    dataYBachi = [],
+    dataXTBachi = [],
+    dataYTBachi = [],
+    dataXTsu = [],
+    dataYTsu = [],
+    dataXIng = [],
+    dataYIng = [];
 
-    if(estadisticas.length === 0) { 
-      console.log("vacio")
-    }else{ 
-      console.log(estadisticas)
-//       return (
-//       <div className="px-6 md:px-10">
-//         <h1 className="text-blue-500 font-bold ">Dashboard</h1>
-//         {/* genero ok */}
-//         <div className="flex justify-between mt-4 space-y-3 mb-8 flex-col md:flex-row md:space-x-4 md:space-y-0 md:mb-14">
-//         {estadisticas.datosPersonales.genero.map(gender => {
-//           {
-//             if(gender.descripcion == "Masculino"){
-//               color = '#00A7EE'
-//               return (
-//                 <div className='p-5 rounded-xl w-full views flex' style={{background: color}}>
-//                   <IoIosMan className="text-base font-bold text-white opacity-30" size={40}/>
-//                   <div>
-//                       <p className="text-base font-bold text-white opacity-30">{gender.descripcion}</p>
-//                       <p className="text-base font-semibold text-white">{gender.cantidad}</p>            
-//                   </div>
-//                 </div>
-//               )
-//             }else if(gender.descripcion == "Femenino"){
-//               color = '#FE8BA2'
-//               return (
-//                 <div className='p-5 rounded-xl w-full views flex' style={{background: color}}>
-//                   <IoIosWoman className="text-base font-bold text-white opacity-30" size={40}/>
-//                   <div>
-//                       <p className="text-base font-bold text-white opacity-30">{gender.descripcion}</p>
-//                       <p className="text-base font-semibold text-white">{gender.cantidad}</p>            
-//                   </div>
-//                 </div>
-//               )
-//             }else{
-//               color = '#c95ffa'
-//               return (
-//                 <div className='p-5 rounded-xl w-full views flex' style={{background: color}}>
-//                   <FaTransgender className="text-base font-bold opacity-30" size={40}/>
-//                   <div>
-//                       <p className="text-base font-bold text-white opacity-30">{gender.descripcion}</p>
-//                       <p className="text-base font-semibold text-white">{gender.cantidad}</p>            
-//                   </div>
-//                 </div>
-//               )
-//             }
-//           }
-//         })}
-//         </div>
-//          {/* vive con ok*/}
-//         <div className="md:flex md:justify-between bg-gray-200 rounded-xl border border-gray-50 py-6 md:p-6 md:text-left mb-4">
-//           {estadisticas.datosPersonales.viveCon.map((vc,i) => {
-//             return(
-//               <div key={i}>
-//                 <h1 className="font-bold text-base text-gray-600 pl-4 md:pl-10">{vc.descripcion}</h1>
-//                 <p className="text-md text-gray-400 pl-4 md:pl-10 md:text-center">{vc.cantidad}</p>
-//                 <div className="flex justify-between mt-4 space-y-3 mb-4 flex-col md:flex-row md:space-x-4 md:space-y-0 md:mb-4">
-//                   <div className="p-5 bg-[#FE8BA2] rounded-xl w-full views flex">
-//                       <IoIosWoman className="text-base font-bold text-white opacity-30" size={40}/>
-//                       <div>
-//                           <p className="text-base font-bold text-white opacity-30">Mujeres</p>
-//                           <p className="text-base font-semibold text-white">20</p>            
-//                       </div>
-//                   </div>
-//                 </div>
-//               </div>
-//             )
-//           })}          
-//         </div>
-//         {/* estado civil e ingresos*/}
-//         <div className="flex">
-//           {/* estado civil ok*/}
-//           <div className="md:flex md:justify-between bg-gray-200 rounded-xl border border-gray-50 py-6 md:p-6 md:text-left mb-4 w-1/2">
-//             {estadisticas.datosPersonales.estadoCivil.map(ec => {
-//               return(
-//                 <div>
-//                   <h1 className="font-bold text-base text-gray-600 pl-4 md:pl-10">{ec.descripcion}</h1>
-//                   <p className="text-md text-gray-400 pl-4 md:pl-10 md:text-center">{ec.cantidad}</p>
-//                 </div>
-//               )
-//             })}          
-//           </div>
-//           {/* Ingresos*/}
-//           <div className="bg-gray-200 rounded-xl border border-gray-50 py-6 md:p-6 md:text-left mb-4 w-1/2">
-//             <h1>Ingresos</h1>
-//             <Chart data={estadisticas.datosPersonales.ingresosFamiliares}/>
-//           </div>
-//         </div>
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchData());
+  }, []);
 
+  if (estadisticas.length === 0) {
+    console.log("vacio");
+  } else {
+    console.log(estadisticas);
+    return (
+      <div className="px-6 md:px-10">
+        <h1 className="text-blue-500 font-bold ">Dashboard</h1>
+        <h1 className="text-gray-400">Datos personales</h1>
+        {/* genero ok */}
+        <div className="flex flex-col mt-4 mb-4">
+          <h1 className="font-bold text-base text-gray-400 pl-4 md:pl-10">
+            Genero
+          </h1>
+          <div className="flex md:justify-between">
+            {estadisticas.datosPersonales.genero.map((gender, index) => {
+              {
+                if (gender.descripcionGenero == "Masculino") {
+                  color = "#00A7EE";
+                  return (
+                    <div
+                      key={index}
+                      className="p-5 rounded-xl w-full views flex"
+                      style={{ background: color }}
+                    >
+                      <IoIosMan
+                        className="text-base font-bold text-white opacity-30"
+                        size={40}
+                      />
+                      <div>
+                        <p className="text-base font-bold text-white opacity-30">
+                          {gender.descripcionGenero}
+                        </p>
+                        <p className="text-base font-semibold text-white">
+                          {gender.cantidadGeneros}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                } else if (gender.descripcionGenero == "Femenino") {
+                  color = "#FE8BA2";
+                  return (
+                    <div
+                      key={index}
+                      className="p-5 rounded-xl w-full views flex"
+                      style={{ background: color }}
+                    >
+                      <IoIosWoman
+                        className="text-base font-bold text-white opacity-30"
+                        size={40}
+                      />
+                      <div>
+                        <p className="text-base font-bold text-white opacity-30">
+                          {gender.descripcionGenero}
+                        </p>
+                        <p className="text-base font-semibold text-white">
+                          {gender.cantidadGeneros}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                } else {
+                  color = "#c95ffa";
+                  return (
+                    <div
+                      key={index}
+                      className="p-5 rounded-xl w-full views flex"
+                      style={{ background: color }}
+                    >
+                      <FaTransgender
+                        className="text-base font-bold opacity-30"
+                        size={40}
+                      />
+                      <div>
+                        <p className="text-base font-bold text-white opacity-30">
+                          {gender.descripcionGenero}
+                        </p>
+                        <p className="text-base font-semibold text-white">
+                          {gender.cantidadGeneros}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                }
+              }
+            })}
+          </div>
+        </div>
 
+        {/* estado civil e ingresos*/}
+        <div className="flex">
+          {/* estado civil ok*/}
+          <div className="md:flex flex-col bg-gray-200 rounded-xl border border-gray-50 py-6 md:p-6 md:text-left mb-4 w-1/2">
+            <h1 className="font-bold text-base text-gray-400 pl-4 md:pl-10">
+              Estado civil
+            </h1>
+            <div className="">
+              {estadisticas.datosPersonales.estado.map((ec) => {
+                return (
+                  <div className="flex py-4">
+                    <h1 className="font-bold text-base text-gray-600 pl-4 md:pl-10">
+                      {ec.descripcionEC}
+                    </h1>
+                    <p className="text-md text-gray-400 pl-4 md:pl-10 md:text-center">
+                      {ec.cantidadEC}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          {/* Ingresos*/}
+          <div className="bg-gray-200 rounded-xl border border-gray-50 py-6 md:p-6 md:text-left mb-4 w-1/2">
+            <h1 className="font-bold text-base text-gray-400 pl-4 md:pl-10">
+              Ingresos
+            </h1>
+            {estadisticas.datosPersonales.ingresosFamiliares.map((data) => {
+              dataX.push(data.descripcionIF);
+              dataY.push(data.cantidadIngresos);
+            })}
+            <Chart
+              dataX={dataY}
+              dataY={dataX}
+              border="#631433"
+              bg="#6314334a"
+              type="bar"
+            />
+          </div>
+        </div>
+        {/* vive con ok*/}
+        <div className="md:flex flex-col md:justify-between bg-gray-200 rounded-xl border border-gray-50 py-6 md:p-6 md:text-left mb-4">
+          <h1 className="font-bold text-base text-gray-400 pl-4 md:pl-10">
+            Vive con
+          </h1>
+          <div className="flex md:justify-between">
+            {estadisticas.datosPersonales.viveCon.map((vc, i) => {
+              return (
+                <div key={i}>
+                  <h1 className="font-bold text-base text-gray-600 pl-4 md:pl-10">
+                    {vc.descripcionVC}
+                  </h1>
+                  <p className="text-md text-gray-400 pl-4 md:pl-10 md:text-center">
+                    {vc.cantidadVC}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+        {/* Datos laborales*/}
+        <div className="flex">
+          {/* Trabajan?*/}
+          <div className="md:flex flex-col md:justify-between bg-gray-200 rounded-xl border border-gray-50 py-6 md:p-6 md:text-left mb-4 w-1/2">
+            <h1 className="font-bold text-base text-gray-400 pl-4 md:pl-10 pb-4">
+              Trabajan?
+            </h1>
+            <div className="flex md:justify-between">
+              <div>
+                <h1 className="font-bold text-base text-gray-600 pl-4 md:pl-10">
+                  Si
+                </h1>
+                <p className="text-md text-gray-400 pl-4 md:pl-10 md:text-center">
+                  {estadisticas.datosLaborales.trabajan.si}
+                </p>
+              </div>
+              <div>
+                <h1 className="font-bold text-base text-gray-600 pl-4 md:pl-10">
+                  No
+                </h1>
+                <p className="text-md text-gray-400 pl-4 md:pl-10 md:text-center">
+                  {estadisticas.datosLaborales.trabajan.no}
+                </p>
+              </div>
+            </div>
+          </div>
+          {/*Trabajo relacionado?*/}
+          <div className="md:flex flex-col md:justify-between bg-gray-200 rounded-xl border border-gray-50 py-6 md:p-6 md:text-left mb-4 w-1/2">
+            <h1 className="font-bold text-base text-gray-400 pl-4 md:pl-10 pb-4">
+              Trabajo relacionado a la carrera?
+            </h1>
+            <div className="flex md:justify-between">
+              <div>
+                <h1 className="font-bold text-base text-gray-600 pl-4 md:pl-10">
+                  Si
+                </h1>
+                <p className="text-md text-gray-400 pl-4 md:pl-10 md:text-center">
+                  {estadisticas.datosLaborales.trabajoRelacionadoEstudios.si}
+                </p>
+              </div>
+              <div>
+                <h1 className="font-bold text-base text-gray-600 pl-4 md:pl-10">
+                  No
+                </h1>
+                <p className="text-md text-gray-400 pl-4 md:pl-10 md:text-center">
+                  {estadisticas.datosLaborales.trabajoRelacionadoEstudios.no}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
 
+        <div className="flex">
+          <div className="w-1/2">
+            <h1 className="font-bold text-base text-gray-400 pl-4 md:pl-10">
+              Bachilleratos
+            </h1>
+            {estadisticas.datosEscolares.bachilleratos.map((data) => {
+              dataXBachi.push(data.nombre);
+              dataYBachi.push(data.cantidad);
+            })}
+            <Chart
+              dataX={dataYBachi}
+              dataY={dataXBachi}
+              border="#631433"
+              bg="#6314334a"
+              type="bar"
+            />
+          </div>
+          <div className="w-1/2 ml-4">
+            <h1 className="font-bold text-base text-gray-400 pl-4 md:pl-10">
+              Tipo de bachilleratos
+            </h1>
+            {estadisticas.datosEscolares.tipoBachillerato.map((data) => {
+              dataXTBachi.push(data.descripcion);
+              dataYTBachi.push(data.cantidadTipoB);
+            })}
+            <Chart
+              dataX={dataYTBachi}
+              dataY={dataXTBachi}
+              border="#631433"
+              bg="#6314334a"
+              type="bar"
+            />
+          </div>
+        </div>
 
-
-//         {/* grafica de promedios revisar */}
-// {/*       
-//         <div className="flex">
-//           <div className="w-1/2">
-//             <h1>Tsu</h1>
-//             <Chart index={index} data={data}/>
-//           </div>
-//           <div className="w-1/2 mx-2.5">
-//             <h1>Ingenieria</h1>
-//             <Chart index={index} data={data}/>
-//           </div>
-//         </div> */}
-//       </div>
-//     )
-    }
-    
-}
+        <div className="flex mt-4 ">
+          <div className="w-1/2">
+            <h1 className="font-bold text-base text-gray-400 pl-4 md:pl-10">
+              Tsu
+            </h1>
+            <Chart
+              dataX={estadisticas.promedios.tsu.porCuatrimestre}
+              dataY={cuatrimestresTsu}
+              border="#631433"
+              bg="#6314334a"
+            />
+          </div>
+          <div className="w-1/2 ml-4">
+            <h1 className="font-bold text-base text-gray-400 pl-4 md:pl-10">
+              Ingenieria
+            </h1>
+            <Chart
+              dataX={estadisticas.promedios.tsu.porCuatrimestre}
+              dataY={cuatrimestresIng}
+              border="#631433"
+              bg="#6314334a"
+            />
+          </div>
+        </div>
+      </div>
+    );
+  }
+};
 
 export default Inicio;

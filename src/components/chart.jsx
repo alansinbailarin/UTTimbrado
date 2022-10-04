@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -9,56 +9,61 @@ import {
   Tooltip,
   Filler,
   Legend,
-} from 'chart.js';
-import { Line } from 'react-chartjs-2';
+  BarElement,
+} from "chart.js";
+import { Line } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 
 ChartJS.register(
   CategoryScale,
   LinearScale,
   PointElement,
   LineElement,
+  BarElement,
   Title,
   Tooltip,
   Filler,
   Legend
 );
 
-const Chart = props => {
-    const options = {
-      responsive: true,
-      plugins: {
-        legend: {
-          display: false
-        },
-        title: {
-          display: false,
-        },
+const Chart = (props) => {
+  const { type } = props;
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        display: false,
       },
-    };
+      title: {
+        display: false,
+      },
+    },
+  };
 
-    // console.log(props.dataY)
-    
-  //   var dataXProps =[],dataYProps =[];
-  //   props.data.map(data=>{
-  //     dataXProps.push(data.descripcion)
-  //     dataYProps.push(data.cantidad)
-  //   }); 
+  const data = {
+    labels: props.dataY,
+    datasets: [
+      {
+        fill: true,
+        data: props.dataX,
+        borderColor: props.border || "rgb(53, 162, 235)",
+        backgroundColor: props.bg || "rgba(53, 162, 235, 0.5)",
+      },
+    ],
+  };
 
-    const labels = props.dataY;
-    console.log(labels)
-      
-    const data = {
-      labels,
-      datasets: [
-        {
-          fill: true,
-          data: props.dataX,
-          borderColor: props.border || 'rgb(53, 162, 235)' ,
-          backgroundColor:props.bg || 'rgba(53, 162, 235, 0.5)',
-        },
-      ],
-    };
-  return <Line options={options} data={data} />;
-}
+  const renderSwitch = (param) => {
+    switch (param) {
+      case "Line":
+        return <Line options={options} data={data} />;
+      case "bar":
+        return <Bar options={options} data={data} />;
+      default:
+        return <Line options={options} data={data} />;
+    }
+  };
 
-export default Chart
+  return <>{renderSwitch(type)}</>;
+};
+
+export default Chart;

@@ -1,5 +1,25 @@
 import React from "react";
 import Chart from "./chart";
+import { FaRegEdit } from "react-icons/fa";
+
+export const cuatrimestresTsu = [
+  "Cero",
+  "Primero",
+  "Segundo",
+  "Tercero",
+  "Cuarto",
+  "Quinto",
+];
+
+export const cuatrimestresIng = [
+  "Sexto",
+  "Septimo",
+  "Octavo",
+  "Noveno",
+  "Decimo",
+  "Onceavo",
+  "Doceavo",
+];
 
 const AlumnoInfo = (props) => {
   const { alumno } = props.alumno != undefined ? props.alumno : "";
@@ -20,24 +40,6 @@ const AlumnoInfo = (props) => {
     "Diciembre",
   ];
 
-  const cuatrimestresTsu = [
-    "Cero",
-    "Primero",
-    "Segundo",
-    "Tercero",
-    "Cuarto",
-    "Quinto",
-  ];
-
-  const cuatrimestresIng = [
-    "Sexto",
-    "Septimo",
-    "Octavo",
-    "Noveno",
-    "Decimo",
-    "Onceavo",
-    "Doceavo",
-  ];
   // funcion para formatear la fecha
   const formatDate = (date) => {
     var date = new Date(date);
@@ -64,6 +66,9 @@ const AlumnoInfo = (props) => {
         </div>
         {/* paner derecho */}
         <div className="w-full bg-white shadow-lg rounded-lg ml-2 p-4">
+          <div>
+            <FaRegEdit size={30} className="text-zinc-300 text-right" />
+          </div>
           {/* Datos personales */}
           <details className="bg-gray-100 open:bg-gray-300 duration-300 rounded-tr-lg rounded-tl-lg">
             <summary className="bg-inherit px-5 py-3 text-lg cursor-pointer">
