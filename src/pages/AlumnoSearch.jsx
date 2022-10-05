@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import AlumnoList from "../components/alumnosList";
 import AlumnoInfo from "../components/AlumnoInfo";
-import { fetchData } from "../resources/fetch";
+import { fetchAlumn } from "../resources/fetch";
+import { useParams } from "react-router-dom";
 
-const Alumnos = () => {
+const AlumnoSearch = () => {
+  let { matricula } = useParams();
   const dispatch = useDispatch();
-  const { alumnos } = useSelector((state) => state.group.init);
   let alumno = useSelector((state) => state.alumno.alumn);
 
   useEffect(() => {
-    dispatch(fetchData());
+    dispatch(fetchAlumn(matricula));
   }, []);
 
   return (
@@ -19,7 +19,6 @@ const Alumnos = () => {
         <h1 className="text-blue-500 font-bold ">
           Alumnos registrados en la plataforma
         </h1>
-        <AlumnoList alumnos={alumnos} />
         {/* dos errores */}
         <AlumnoInfo alumno={alumno} />
       </div>
@@ -27,4 +26,4 @@ const Alumnos = () => {
   );
 };
 
-export default Alumnos;
+export default AlumnoSearch;

@@ -21,24 +21,24 @@ export const cuatrimestresIng = [
   "Doceavo",
 ];
 
+const months = [
+  "Enero",
+  "Febrero",
+  "Marzo",
+  "Abril",
+  "Mayo",
+  "Junio",
+  "Julio",
+  "Agosto",
+  "Septiembre",
+  "Octubre",
+  "Noviembre",
+  "Diciembre",
+];
+
 const AlumnoInfo = (props) => {
   const { alumno } = props.alumno != undefined ? props.alumno : "";
   let data = alumno != undefined ? alumno[0] : "";
-
-  const months = [
-    "Enero",
-    "Febrero",
-    "Marzo",
-    "Abril",
-    "Mayo",
-    "Junio",
-    "Julio",
-    "Agosto",
-    "Septiembre",
-    "Octubre",
-    "Noviembre",
-    "Diciembre",
-  ];
 
   // funcion para formatear la fecha
   const formatDate = (date) => {
