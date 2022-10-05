@@ -8,7 +8,7 @@ import { cuatrimestresTsu, cuatrimestresIng } from "../components/AlumnoInfo";
 
 const Inicio = () => {
   const { estadisticas } = useSelector((state) => state.group.init);
-  var color, icon;
+  var color;
   var dataX = [],
     dataY = [],
     dataXBachi = [],

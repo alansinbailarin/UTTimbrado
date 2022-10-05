@@ -283,13 +283,23 @@ const AlumnoInfo = (props) => {
                       </div>
                     </details>
                   </div>
+                  <div className="px-3 mt-4">
+                      <span className="font-bold text-base">Registro escolar</span>
+                      <ul className="list-inside space-y-2">
+                          <li>
+                              <div className="text-teal-600">{data.datosEscolares.nombreBachillerato}</div>
+                              <div className="text-gray-500 text-xs">{data.datosEscolares.entidadFederativa.descripcion}</div>
+                          </li>
+                      </ul>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div></div>
-        </div>
+        <div>
       </div>
+    </div>
+  </div>
       //   <div className="md:flex my-4">
       //     {/* paner izquierdo */}
       //     <div className="md:w-full lg:max-w-[250px] bg-white border border-gray-200 rounded-lg mr-2 p-4">
@@ -330,8 +340,8 @@ const AlumnoInfo = (props) => {
       //           Datos escolares
       //         </summary>
       //         <div className="bg-white px-5 py-3 border border-gray-100 text-sm font-light">
-      //           <p>{data.datosEscolares.nombreBachillerato}</p>
-      //           <p>{data.datosEscolares.entidadFederativa.descripcion}</p>
+      //           <p></p>
+      //           <p></p>
       //           <p>{data.datosEscolares.tipoBachillerato.descripcion}</p>
       //         </div>
       //       </details>

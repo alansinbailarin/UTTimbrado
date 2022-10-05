@@ -4,7 +4,7 @@ const AlumnoCard = props => {
   const slide = createRef();
   const { matricula, nombreCompleto, foto } = props.alumno
   const {index, current} =props; 
-  let classNames = 'slide w-56 rounded-lg border border-gray-200 bg-white inline-block m-4 cursor-pointer'
+  let classNames = 'slide w-[185px] rounded-lg border border-gray-200 bg-white inline-block m-4 cursor-pointer'
   
   if (current === index) classNames += ' slide--current scale-110'
   else if (current - 1 === index) classNames += ' slide--previous'

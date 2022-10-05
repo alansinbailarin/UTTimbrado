@@ -27,11 +27,12 @@ const SearchBar = () => {
       />
       <button
         onClick={() => onSearch(value)}
-        className="ml-2 px-6 py-2 bg-blue-500 rounded-md  text-white font-semibold">
+        className="ml-2 px-6 py-2 bg-blue-500 rounded-md  text-white font-semibold"
+      >
         Buscar
       </button>
-      {value === "" ?(
-        false 
+      {value === "" ? (
+        false
       ) : (
         
         <div className="dropdown w-60 shadow-md bg-white absolute mt-10 text-sm text-gray-500">
