@@ -27,6 +27,10 @@ body {
   background-color: #f8f8f8;
 }
 
+.icon-info {
+  margin-top: 3px;
+}
+
 main {
   width: 100%;
   padding-top: 20px;
@@ -213,5 +217,8 @@ main {
   main {
     width: 85%;
     overflow: hidden;
+  }
+  .sidebar {
+    height: 360vh;
   }
 }
