@@ -11,7 +11,7 @@ const Alumnos = () => {
   return (
     <>
       <div className="px-6 md:px-10">
-        <h1 className="text-blue-500 font-bold ">
+        <h1 className="text-blue-500 font-bold mb-4">
           Alumnos registrados en la plataforma
         </h1>
         <AlumnoList alumnos={alumnos} />

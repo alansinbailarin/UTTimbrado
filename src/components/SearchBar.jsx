@@ -34,7 +34,7 @@ const SearchBar = () => {
         false 
       ) : (
         
-        <div className="dropdown w-60 shadow-md bg-white transition ease-in-out delay-150 absolute overflow-auto mt-10 text-sm text-gray-500">
+        <div className="dropdown w-60 shadow-md bg-white absolute mt-10 text-sm text-gray-500">
         {alumnos
           .filter((alumno) => {
             const searchTerm = value.toLowerCase();
@@ -46,7 +46,7 @@ const SearchBar = () => {
               matricula.toLowerCase().search(searchTerm) != -1
             );
           })
-          .slice(0, 10)
+          .slice(0, 3)
           .map((alumno) => (
             <div
               onClick={() => onSearch(alumno.matricula)}

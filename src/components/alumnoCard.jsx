@@ -22,7 +22,7 @@ const AlumnoCard = props => {
     <li ref={slide} className={classNames} onClick={handleSlideClick}>           
       <div className="flex flex-col items-center p-4">
         <img className="mb-3 h-16 w-16 rounded-full shadow-lg object-cover" src={foto} onLoad={imageLoaded}/>
-        <h5 className="text-md mb-1 font-medium text-center text-gray-900 dark:text-white">{nombreCompleto}</h5>
+        <h5 className="text-md mb-1 font-medium text-center text-gray-600 dark:text-white">{nombreCompleto}</h5>
         <span className="text-sm text-gray-500 dark:text-gray-400">{matricula}</span>
       </div>
     </li>

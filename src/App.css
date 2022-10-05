@@ -107,6 +107,7 @@ main {
   display: flex;
   flex-direction: column;
   border: 1pr solid gray;
+  z-index: 1;
 }
 
 .dropdown:empty {

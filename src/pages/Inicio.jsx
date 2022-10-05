@@ -27,7 +27,7 @@ const Inicio = () => {
     console.log(estadisticas);
     return (
       <div className="px-6 md:px-10">
-        <h1 className="text-blue-500 font-bold ">Dashboard</h1>
+        <h1 className="text-blue-500 font-bold">Dashboard</h1>
         {/* genero ok */}
         <div className="flex flex-col">
           <div className="mt-4 grid gap-2 md:grid-cols-2">
