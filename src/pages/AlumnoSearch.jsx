@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import AlumnoInfo from "../components/AlumnoInfo";
 import { fetchAlumn } from "../resources/fetch";
 import { useParams } from "react-router-dom";
+import { BsFillEmojiFrownFill } from "react-icons/bs";
 
 const AlumnoSearch = () => {
   let { matricula } = useParams();
@@ -16,9 +17,6 @@ const AlumnoSearch = () => {
   return (
     <>
       <div className="px-6 md:px-10">
-        <h1 className="text-blue-500 font-bold ">
-          Alumnos registrados en la plataforma
-        </h1>
         {/* dos errores */}
         <AlumnoInfo alumno={alumno} />
       </div>
