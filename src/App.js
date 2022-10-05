@@ -1,26 +1,26 @@
-import React from 'react';
-import './App.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Sidebar from './components/Sidebar';
-import Dashboard from './pages/Inicio.jsx';
-import Inicio from './pages/Inicio.jsx';
-import Alumnos from './pages/Alumnos.jsx';
-import Grupo from './pages/Grupo.jsx';
-import Navbar from './components/Navbar';
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./App.css";
+import Navbar from "./components/Navbar";
+import Sidebar from "./components/Sidebar";
+
+import Inicio from "./pages/Inicio.jsx";
+import Alumnos from "./pages/Alumnos.jsx";
+import AlumnoSearch from "./pages/AlumnoSearch";
 
 const App = () => {
   return (
     <BrowserRouter>
-    <Navbar/>
+      <Navbar />
       <Sidebar>
         <Routes>
-          <Route path="/" element={<Dashboard />} />
+          <Route path="/" element={<Inicio />} />
           <Route path="/inicio" element={<Inicio />} />
           <Route path="/alumnos" element={<Alumnos />} />
-          <Route path="/grupo" element={<Grupo />} />
+          <Route path="/alumnoSearch/:matricula" element={<AlumnoSearch />} />
         </Routes>
       </Sidebar>
-    </BrowserRouter>  
+    </BrowserRouter>
   );
 };
 

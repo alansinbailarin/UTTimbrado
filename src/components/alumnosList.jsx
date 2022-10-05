@@ -1,18 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import AlumnoCard from "./alumnoCard";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { fetchAlumn } from "../resources/fetch";
 
 const AlumnoList = (props) => {
   const { alumnos } = props;
   const [current, setCurrent] = useState(0);
   const dispatch = useDispatch();
+  let { matricula } = useParams();
   const wrapperTransform = {
     transform: `translateX(-${current * (100 / alumnos.length)}%)`,
   };
-
   const getMatricula = (x) => {
     dispatch(fetchAlumn(alumnos[x].matricula));
   };
@@ -37,6 +38,12 @@ const AlumnoList = (props) => {
       getMatricula(index);
     }
   };
+
+  useEffect(() => {
+    if (matricula !== undefined) {
+      dispatch(fetchAlumn(matricula));
+    }
+  }, []);
 
   return (
     <div className="flex items-center bg-white border border-gray-150 rounded-xl">
