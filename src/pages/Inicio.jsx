@@ -26,10 +26,10 @@ const Inicio = () => {
   } else {
     console.log(estadisticas);
     return (
-      <div className="px-6 md:px-10">
+      <div className="px-6 md:px-10 mx-auto">
         <h1 className="text-blue-500 font-bold">Dashboard</h1>
         {/* genero ok */}
-        <div className="flex flex-col">
+        <div className="flex flex-col container-main">
           <div className="mt-4 grid gap-2 md:grid-cols-2">
             {estadisticas.datosPersonales.genero.map((gender, index) => {
               {
@@ -106,7 +106,7 @@ const Inicio = () => {
         </div>
 
         {/* estado civil e ingresos*/}
-        <div className="mt-4 grid gap-2 md:grid-cols-2">
+        <div className="mx-auto my-4 md:grid-cols-2">
           {/* estado civil ok*/}
           <div className="md:flex flex-col bg-white rounded-xl border border-gray-200 py-6 md:p-6 md:text-left mb-4">
             <h1 className="font-bold text-base text-gray-400 pl-4 md:pl-10">

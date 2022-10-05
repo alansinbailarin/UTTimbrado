@@ -50,7 +50,7 @@ const AlumnoInfo = (props) => {
   //comprueba que los datos esten cargados
   if (data.length !== 0) {
     return (
-      <div className="container mx-auto my-4 ">
+      <div className="mx-auto my-4 ">
         <div className="md:flex no-wrap md:-mx-2">
           <div className="w-full md:w-3/12 md:mx-2">
             <div className="bg-white p-5 border border-gray-200 rounded-lg">
@@ -123,8 +123,20 @@ const AlumnoInfo = (props) => {
           <div className="w-full mt-4 md:mt-0 md:-9/12  mx-0 md:mx-2 h-64">
             <div className="bg-white p-3 border border-gray-200 rounded-lg">
               <div className="flex ml-6 items-center space-x-2 font-semibold text-gray-900 leading-8">
-                <span className="text-blue-400"><svg className="h-5" xlmns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
-                    <path strokeLinecap="round" stroke-strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" ></path>
+                <span className="text-blue-400">
+                  <svg
+                    className="h-5"
+                    xlmns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      stroke-strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                    ></path>
                   </svg>
                 </span>
                 <span className="text-blue-400">
@@ -284,22 +296,86 @@ const AlumnoInfo = (props) => {
                     </details>
                   </div>
                   <div className="px-3 mt-4">
-                      <span className="font-bold text-base">Registro escolar</span>
-                      <ul className="list-inside space-y-2">
-                          <li>
-                              <div className="text-teal-600">{data.datosEscolares.nombreBachillerato}</div>
-                              <div className="text-gray-500 text-xs">{data.datosEscolares.entidadFederativa.descripcion}</div>
-                          </li>
-                      </ul>
+                    <span className="font-bold text-base">Datos escolares</span>
+                    <ul className="list-inside space-y-2">
+                      <li>
+                        <div className="text-blue-500 font-bold text-md">
+                          {data.datosEscolares.nombreBachillerato}
+                        </div>
+                        <div className="text-gray-500 text-md font-semibold">
+                          {data.datosEscolares.entidadFederativa.descripcion}
+                        </div>
+                        <div className="text-gray-500 text-md font-light">
+                          {data.datosEscolares.tipoBachillerato.descripcion}
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div
+                    className="px-3 mt-4"
+                    style={
+                      data.datosLaborales.trabaja
+                        ? { display: "block" }
+                        : { display: "none" }
+                    }
+                  >
+                    <span className="font-bold text-base">Datos laborales</span>
+                    <ul className="list-inside space-y-2">
+                      <li>
+                        <p>
+                          <span className="text-gray-500 font-semibold">
+                            Relacionado con la carrera:{" "}
+                          </span>
+
+                          {data.datosLaborales.estaRelacionadoEstudios
+                            ? "Si"
+                            : "No"}
+                        </p>
+                        <p>
+                          Nombre de la empresa:{" "}
+                          {data.datosLaborales.empresa.nombre}
+                        </p>
+                        <p>
+                          Departamento:{" "}
+                          {data.datosLaborales.empresa.departamento}
+                        </p>
+                        <p>Puesto: {data.datosLaborales.empresa.puesto}</p>
+                        <p>
+                          Ubicación: {data.datosLaborales.empresa.domicilio}
+                        </p>
+                        <p>Telefono: {data.datosLaborales.empresa.telefono}</p>
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="md:grid grid-cols-2">
+                    <div className="bg-gray-100 my-4 mr-3 p-4 rounded-lg">
+                      <p className="text-gray-600 font-bold text-sm mb-2">
+                        Promedio de TSU: {data.promedios.tsu.promedio}
+                      </p>
+                      <Chart
+                        dataX={data.promedios.tsu.porCuatrimestre}
+                        dataY={cuatrimestresTsu}
+                        border="#631433"
+                        bg="#6314334a"
+                      />
+                    </div>
+                    <div className="bg-gray-100 my-4 mr-3 p-4 rounded-lg">
+                      <p className="text-gray-600 font-bold text-sm mb-2">
+                        Promedio de Ingenieria:{" "}
+                        {data.promedios.ingenieria.promedio}
+                      </p>
+                      <Chart
+                        dataX={data.promedios.ingenieria.porCuatrimestre}
+                        dataY={cuatrimestresIng}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        <div>
+        </div>
       </div>
-    </div>
-  </div>
       //   <div className="md:flex my-4">
       //     {/* paner izquierdo */}
       //     <div className="md:w-full lg:max-w-[250px] bg-white border border-gray-200 rounded-lg mr-2 p-4">
@@ -342,11 +418,11 @@ const AlumnoInfo = (props) => {
       //         <div className="bg-white px-5 py-3 border border-gray-100 text-sm font-light">
       //           <p></p>
       //           <p></p>
-      //           <p>{data.datosEscolares.tipoBachillerato.descripcion}</p>
+      //           <p></p>
       //         </div>
       //       </details>
       //       {/* Datos laborales */}
-      //       <deta
+      //       <details
       //         className="bg-gray-100 open:bg-gray-300 duration-300"
       //         style={
       //           data.datosLaborales.trabaja
@@ -358,14 +434,9 @@ const AlumnoInfo = (props) => {
       //           Datos laborales
       //         </summary>
       //         <div className="bg-white px-5 py-3 border border-gray-100 text-sm font-light">
-      //           <p>{data.datosLaborales.estaRelacionadoEstudios ? "Si" : "No"}</p>
-      //           <p>{data.datosLaborales.empresa.nombre}</p>
-      //           <p>{data.datosLaborales.empresa.departamento}</p>
-      //           <p>{data.datosLaborales.empresa.puesto}</p>
-      //           <p>{data.datosLaborales.empresa.domicilio}</p>
-      //           <p>{data.datosLaborales.empresa.telefono}</p>
+      //
       //         </div>
-      //       </deta
+      //       </details>
       //
       //       {/* Promedios */}
       //       <details className="bg-gray-100 open:bg-gray-300 duration-300 rounded-br-lg rounded-bl-lg">

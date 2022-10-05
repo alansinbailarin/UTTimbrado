@@ -41,23 +41,6 @@ const SearchBar = () => {
             const matricula = alumno.matricula;
             const nombre = alumno.nombreCompleto;
 
-<<<<<<< HEAD
-            return (
-              nombre.toLowerCase().search(searchTerm) != -1 ||
-              matricula.toLowerCase().search(searchTerm) != -1
-            );
-          })
-          .slice(0, 3)
-          .map((alumno) => (
-            <div
-              onClick={() => onSearch(alumno.matricula)}
-              className="border py-2 px-4 border-gray-50 cursor-pointer hover:bg-gray-50"
-              key={alumno.matricula}>
-              <a href="#">{alumno.nombreCompleto}<p className="text-gray-300">{alumno.matricula}</p></a>
-            </div>
-          ))}
-      </div>
-=======
               return (
                 nombre.toLowerCase().search(searchTerm) != -1 ||
                 matricula.toLowerCase().search(searchTerm) != -1
@@ -77,7 +60,6 @@ const SearchBar = () => {
               </a>
             ))}
         </div>
->>>>>>> 929d88abbbf5dc346b905fcd0160784195d7a08a
       )}
     </div>
   );
