@@ -19,10 +19,12 @@ const Alumnos = () => {
         <h1 className="text-blue-500 font-bold mb-4">
           Alumnos registrados en la plataforma
         </h1>
-        <p className="text-gray-700 mb-4">
-          <strong>Gurupo:</strong>
-          {" " + grupo.descripcion}
-        </p>
+        <div className="bg-white border border-gray-200 rounded-lg mb-4 p-3">
+          <p className="text-gray-600 text-sm">
+            <strong>Grupo:</strong>
+            {" " + grupo.descripcion}
+          </p>
+        </div>
         <AlumnoList alumnos={alumnos} />
         {/* dos errores */}
         <AlumnoInfo alumno={alumno} />

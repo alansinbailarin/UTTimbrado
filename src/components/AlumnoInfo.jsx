@@ -130,7 +130,6 @@ const AlumnoInfo = (props) => {
                   <FaRegEdit size={20} />
                 </a>
               </div>
-
               <div className="flex ml-6 items-center space-x-2 font-semibold text-gray-900 leading-8">
                 <span className="text-blue-400">
                   <svg
@@ -341,18 +340,35 @@ const AlumnoInfo = (props) => {
                             : "No"}
                         </p>
                         <p>
-                          Nombre de la empresa:{" "}
+                          <span className="text-gray-500 font-semibold">
+                            Nombre de la empresa:{" "}
+                          </span>
                           {data.datosLaborales.empresa.nombre}
                         </p>
                         <p>
-                          Departamento:{" "}
+                          <span className="text-gray-500 font-semibold">
+                            Departamento:{" "}
+                          </span>
                           {data.datosLaborales.empresa.departamento}
                         </p>
-                        <p>Puesto: {data.datosLaborales.empresa.puesto}</p>
                         <p>
-                          Ubicación: {data.datosLaborales.empresa.domicilio}
+                          <span className="text-gray-500 font-semibold">
+                            Puesto:{" "}
+                          </span>
+                          {data.datosLaborales.empresa.puesto}
                         </p>
-                        <p>Telefono: {data.datosLaborales.empresa.telefono}</p>
+                        <p>
+                          <span className="text-gray-500 font-semibold">
+                            Ubicación:{" "}
+                          </span>
+                          {data.datosLaborales.empresa.domicilio}
+                        </p>
+                        <p>
+                          <span className="text-gray-500 font-semibold">
+                            Teléfono:{" "}
+                          </span>
+                          {data.datosLaborales.empresa.telefono}
+                        </p>
                       </li>
                     </ul>
                   </div>

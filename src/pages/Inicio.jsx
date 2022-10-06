@@ -28,14 +28,16 @@ const Inicio = () => {
     console.log(estadisticas);
     return (
       <div className="px-6 md:px-10 mx-auto">
-        <h1 className="text-blue-500 font-bold">Dashboard</h1>
-        <p className="text-gray-700 my-4">
-          <strong>Gurupo:</strong>
-          {" " + grupo.descripcion}
-        </p>
+        <h1 className="text-blue-500 font-bold mb-4">Dashboard</h1>
+        <div className="bg-white border border-gray-200 rounded-lg mb-4 p-3">
+          <p className="text-gray-600 text-sm">
+            <strong>Grupo:</strong>
+            {" " + grupo.descripcion}
+          </p>
+        </div>
         {/* genero ok */}
         <div className="flex flex-col">
-          <div className="mt-4 grid gap-3 md:grid-cols-2">
+          <div className="grid gap-3 md:grid-cols-2">
             {estadisticas.datosPersonales.genero.map((gender, index) => {
               // eslint-disable-next-line no-lone-blocks
               {
@@ -175,7 +177,7 @@ const Inicio = () => {
                   <div>
                     <BiInfoCircle className="text-gray-500 ml-2 icon-info text-center" />
                   </div>
-                  <p className="bg-gray-300 py-1 px-2 rounded-md ml-24 cursor-pointer text-gray-600 font-bold text-xs">
+                  <p className="bg-gray-300 py-1 px-2 rounded-md ml-20 cursor-pointer text-gray-600 font-bold text-xs">
                     Ver reporte
                   </p>
                 </div>
