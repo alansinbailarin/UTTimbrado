@@ -122,6 +122,15 @@ const AlumnoInfo = (props) => {
           </div>
           <div className="w-full mt-4 md:mt-0 md:-9/12  mx-0 md:mx-2 h-64">
             <div className="bg-white p-3 border border-gray-200 rounded-lg">
+              <div className="flex flex-row-reverse ml-4">
+                <a
+                  className="mr-4 text-gray-300 hover:text-gray-600"
+                  href={"/editAlumno/" + data.matricula}
+                >
+                  <FaRegEdit size={20} />
+                </a>
+              </div>
+
               <div className="flex ml-6 items-center space-x-2 font-semibold text-gray-900 leading-8">
                 <span className="text-blue-400">
                   <svg
@@ -296,122 +305,86 @@ const AlumnoInfo = (props) => {
                     </details>
                   </div>
                   <div className="px-3 mt-4">
-                    <span className="font-bold text-base">
-                      Registro escolar
-                    </span>
+                    <span className="font-bold text-base">Datos escolares</span>
                     <ul className="list-inside space-y-2">
                       <li>
-                        <div className="text-teal-600">
+                        <div className="text-blue-500 font-bold text-md">
                           {data.datosEscolares.nombreBachillerato}
                         </div>
-                        <div className="text-gray-500 text-xs">
+                        <div className="text-gray-500 text-md font-semibold">
                           {data.datosEscolares.entidadFederativa.descripcion}
+                        </div>
+                        <div className="text-gray-500 text-md font-light">
+                          {data.datosEscolares.tipoBachillerato.descripcion}
                         </div>
                       </li>
                     </ul>
+                  </div>
+                  <div
+                    className="px-3 mt-4"
+                    style={
+                      data.datosLaborales.trabaja
+                        ? { display: "block" }
+                        : { display: "none" }
+                    }
+                  >
+                    <span className="font-bold text-base">Datos laborales</span>
+                    <ul className="list-inside space-y-2">
+                      <li>
+                        <p>
+                          <span className="text-gray-500 font-semibold">
+                            Relacionado con la carrera:{" "}
+                          </span>
+
+                          {data.datosLaborales.estaRelacionadoEstudios
+                            ? "Si"
+                            : "No"}
+                        </p>
+                        <p>
+                          Nombre de la empresa:{" "}
+                          {data.datosLaborales.empresa.nombre}
+                        </p>
+                        <p>
+                          Departamento:{" "}
+                          {data.datosLaborales.empresa.departamento}
+                        </p>
+                        <p>Puesto: {data.datosLaborales.empresa.puesto}</p>
+                        <p>
+                          Ubicación: {data.datosLaborales.empresa.domicilio}
+                        </p>
+                        <p>Telefono: {data.datosLaborales.empresa.telefono}</p>
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="md:grid grid-cols-2">
+                    <div className="bg-gray-100 my-4 mr-3 p-4 rounded-lg">
+                      <p className="text-gray-600 font-bold text-sm mb-2">
+                        Promedio de TSU: {data.promedios.tsu.promedio}
+                      </p>
+                      <Chart
+                        dataX={data.promedios.tsu.porCuatrimestre}
+                        dataY={cuatrimestresTsu}
+                        border="#631433"
+                        bg="#6314334a"
+                      />
+                    </div>
+                    <div className="bg-gray-100 my-4 mr-3 p-4 rounded-lg">
+                      <p className="text-gray-600 font-bold text-sm mb-2">
+                        Promedio de Ingenieria:{" "}
+                        {data.promedios.ingenieria.promedio}
+                      </p>
+                      <Chart
+                        dataX={data.promedios.ingenieria.porCuatrimestre}
+                        dataY={cuatrimestresIng}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div></div>
         </div>
       </div>
-      //   <div className="md:flex my-4">
-      //     {/* paner izquierdo */}
-      //     <div className="md:w-full lg:max-w-[250px] bg-white border border-gray-200 rounded-lg mr-2 p-4">
-      //       <img
-      //         className="mb-3 img-main rounded-full shadow-lg object-cover m-auto"
-      //         src={data.foto}
-      //       />
-      //       <>
-      //         <p className="text-lg text-center">{data.nombreCompleto}</p>
-      //         <p className="text-sm text-slate-500 text-center">
-      //           {data.matricula}
-      //         </p>
-      //       </>
-      //     </div>
-      //     {/* paner derecho */}
-      //     <div className="w-full bg-white shadow-lg rounded-lg ml-2 p-4">
-      //       {/* Datos personales */}
-      //       <details className="bg-gray-100 open:bg-gray-300 duration-300 rounded-tr-lg rounded-tl-lg">
-      //         <summary className="bg-inherit px-5 py-3 text-lg cursor-pointer">
-      //           Datos personales
-      //         </summary>
-      //         <div className="bg-white px-5 py-3 border border-gray-100 text-sm font-light">
-      //           <p></p>
-      //           <p></p>
-      //           <p></p>
-      //           <p></p>
-      //           <p>
-      //
-      //           </p>
-      //           <p>
-      //
-      //           </p>
-      //         </div>
-      //       </details>
-      //       {/* Datos escolares */}
-      //       <details className="bg-gray-100 open:bg-gray-300 duration-300">
-      //         <summary className="bg-inherit px-5 py-3 text-lg cursor-pointer">
-      //           Datos escolares
-      //         </summary>
-      //         <div className="bg-white px-5 py-3 border border-gray-100 text-sm font-light">
-      //           <p></p>
-      //           <p></p>
-      //           <p>{data.datosEscolares.tipoBachillerato.descripcion}</p>
-      //         </div>
-      //       </details>
-      //       {/* Datos laborales */}
-      //       <deta
-      //         className="bg-gray-100 open:bg-gray-300 duration-300"
-      //         style={
-      //           data.datosLaborales.trabaja
-      //             ? { display: "block" }
-      //             : { display: "none" }
-      //         }
-      //       >
-      //         <summary className="bg-inherit px-5 py-3 text-lg cursor-pointer">
-      //           Datos laborales
-      //         </summary>
-      //         <div className="bg-white px-5 py-3 border border-gray-100 text-sm font-light">
-      //           <p>{data.datosLaborales.estaRelacionadoEstudios ? "Si" : "No"}</p>
-      //           <p>{data.datosLaborales.empresa.nombre}</p>
-      //           <p>{data.datosLaborales.empresa.departamento}</p>
-      //           <p>{data.datosLaborales.empresa.puesto}</p>
-      //           <p>{data.datosLaborales.empresa.domicilio}</p>
-      //           <p>{data.datosLaborales.empresa.telefono}</p>
-      //         </div>
-      //       </deta
-      //
-      //       {/* Promedios */}
-      //       <details className="bg-gray-100 open:bg-gray-300 duration-300 rounded-br-lg rounded-bl-lg">
-      //         <summary className="bg-inherit px-5 py-3 text-lg cursor-pointer">
-      //           Promedios
-      //         </summary>
-      //         <div className="bg-white px-5 py-3 border border-gray-100 text-sm font-light">
-      //
-      //           {/* grafica Tsu */}
-      //           <Chart
-      //             dataX={data.promedios.tsu.porCuatrimestre}
-      //             dataY={cuatrimestresTsu}
-      //             border="#631433"
-      //             bg="#6314334a"
-      //           />
-      //           <h1>Ingenieria</h1>
-      //           <p>
-      //             <strong>Promedio: </strong>
-      //             {data.promedios.ingenieria.promedio}
-      //           </p>
-      //           {/* grafica Ingenieria */}
-      //           <Chart
-      //             dataX={data.promedios.ingenieria.porCuatrimestre}
-      //             dataY={cuatrimestresIng}
-      //           />
-      //         </div>
-      //       </details>
-      //     </div>
-      //   </div>
     );
   }
 };

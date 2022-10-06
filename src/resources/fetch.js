@@ -1,5 +1,6 @@
 import { setGroup } from "../redux/slices/grupo";
 import { setAlumno } from "../redux/slices/alumnos";
+import { setCatalogo } from "../redux/slices/catalogo";
 
 export const fetchData = () => (dispatch) => {
   fetch(
@@ -20,6 +21,15 @@ export const fetchAlumn = (matricula) => async (dispatch) => {
     .then((response) => response.json())
     .then((response) => {
       dispatch(setAlumno(response));
+    })
+    .catch((error) => console.log(error));
+};
+
+export const fetchCatalogo = () => async (dispatch) => {
+  await fetch(`http://www.proyectoalumno.somee.com/Catalog/GetCatalogsList`)
+    .then((response) => response.json())
+    .then((response) => {
+      dispatch(setCatalogo(response));
     })
     .catch((error) => console.log(error));
 };

@@ -6,7 +6,7 @@ import { fetchData } from "../resources/fetch";
 
 const Alumnos = () => {
   const dispatch = useDispatch();
-  const { alumnos } = useSelector((state) => state.group.init);
+  const { alumnos, grupo } = useSelector((state) => state.group.init);
   let alumno = useSelector((state) => state.alumno.alumn);
 
   useEffect(() => {
@@ -19,6 +19,10 @@ const Alumnos = () => {
         <h1 className="text-blue-500 font-bold mb-4">
           Alumnos registrados en la plataforma
         </h1>
+        <p className="text-gray-700 mb-4">
+          <strong>Gurupo:</strong>
+          {" " + grupo.descripcion}
+        </p>
         <AlumnoList alumnos={alumnos} />
         {/* dos errores */}
         <AlumnoInfo alumno={alumno} />

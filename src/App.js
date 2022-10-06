@@ -7,6 +7,7 @@ import Sidebar from "./components/Sidebar";
 import Inicio from "./pages/Inicio.jsx";
 import Alumnos from "./pages/Alumnos.jsx";
 import AlumnoSearch from "./pages/AlumnoSearch";
+import EditAlumno from "./pages/EditAlumn";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/inicio" element={<Inicio />} />
           <Route path="/alumnos" element={<Alumnos />} />
           <Route path="/alumnoSearch/:matricula" element={<AlumnoSearch />} />
+          <Route path="/editAlumno/:matricula" element={<EditAlumno />} />
         </Routes>
       </Sidebar>
     </BrowserRouter>
