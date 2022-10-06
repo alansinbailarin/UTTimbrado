@@ -5,6 +5,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchData } from "../resources/fetch";
 import { cuatrimestresTsu, cuatrimestresIng } from "../components/AlumnoInfo";
+import { BiInfoCircle } from "react-icons/bi";
 
 const Inicio = () => {
   const { estadisticas, grupo } = useSelector((state) => state.group.init);
@@ -33,9 +34,10 @@ const Inicio = () => {
           {" " + grupo.descripcion}
         </p>
         {/* genero ok */}
-        <div className="flex flex-col container-main">
-          <div className="mt-4 grid gap-2 md:grid-cols-2">
+        <div className="flex flex-col">
+          <div className="mt-4 grid gap-3 md:grid-cols-2">
             {estadisticas.datosPersonales.genero.map((gender, index) => {
+              // eslint-disable-next-line no-lone-blocks
               {
                 if (gender.descripcionGenero == "Masculino") {
                   color = "#00A7EE";
@@ -110,31 +112,120 @@ const Inicio = () => {
         </div>
 
         {/* estado civil e ingresos*/}
-        <div className="mx-auto my-4 md:grid-cols-2">
-          {/* estado civil ok*/}
-          <div className="md:flex flex-col bg-white rounded-xl border border-gray-200 py-6 md:p-6 md:text-left mb-4">
-            <h1 className="font-bold text-base text-gray-400 pl-4 md:pl-10">
-              Estado civil
-            </h1>
-            <div className="">
-              {estadisticas.datosPersonales.estado.map((ec) => {
-                return (
-                  <div className="flex py-4">
-                    <h1 className="font-bold text-base text-gray-600 pl-4 md:pl-10">
-                      {ec.descripcionEC}
-                    </h1>
-                    <p className="text-md text-gray-400 pl-4 md:pl-10 md:text-center">
-                      {ec.cantidadEC}
-                    </p>
+        <div className="md:grid md:grid-cols-2 my-4 gap-3 mx-auto">
+          <div className="grid md:grid-cols-2 gap-3">
+            <div className="grid grid-cols-2">
+              <div className="bg-white p-4 border border-gray-200 rounded-lg col-span-2">
+                <div className="flex">
+                  <h1 className="text-gray-700 font-medium text-base">
+                    Estado civil
+                  </h1>
+                  <div>
+                    <BiInfoCircle className="text-gray-500 ml-2 icon-info text-center" />
                   </div>
-                );
-              })}
+                  <p className="bg-gray-300 py-1 px-2 rounded-md ml-12 cursor-pointer text-gray-600 font-bold text-xs">
+                    Ver reporte
+                  </p>
+                </div>
+                {estadisticas.datosPersonales.estado.map((ec) => {
+                  return (
+                    <div className="flex gap-1 mt-3">
+                      <h1 className="text-gray-500 font-bold text-xs">
+                        {ec.descripcionEC}:
+                      </h1>
+                      <p className="text-blue-500 font-medium text-xs">
+                        {ec.cantidadEC} estudiante{"(s)"}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+              <div className="bg-white p-3 mt-3 border border-gray-200 rounded-lg col-span-2">
+                <div className="flex">
+                  <h1 className="text-gray-700 font-medium text-base">
+                    Viven con
+                  </h1>
+                  <div>
+                    <BiInfoCircle className="text-gray-500 ml-2 icon-info text-center" />
+                  </div>
+                  <p className="bg-gray-300 py-1 px-2 rounded-md ml-16 cursor-pointer text-gray-600 font-bold text-xs">
+                    Ver reporte
+                  </p>
+                </div>
+                {estadisticas.datosPersonales.viveCon.map((vc, i) => {
+                  return (
+                    <div key={i} className="flex gap-1 mt-3">
+                      <h1 className="text-gray-500 font-bold text-xs">
+                        {vc.descripcionVC}:
+                      </h1>
+                      <p className="text-blue-500 font-medium text-xs">
+                        {vc.cantidadVC} estudiante{"(s)"}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+            <div className="grid grid-cols-2">
+              <div className="bg-white p-3 border border-gray-200 rounded-lg col-span-2">
+                <div className="flex">
+                  <h1 className="text-gray-700 font-medium text-base">
+                    Trabajo
+                  </h1>
+                  <div>
+                    <BiInfoCircle className="text-gray-500 ml-2 icon-info text-center" />
+                  </div>
+                  <p className="bg-gray-300 py-1 px-2 rounded-md ml-24 cursor-pointer text-gray-600 font-bold text-xs">
+                    Ver reporte
+                  </p>
+                </div>
+                <div className="flex gap-1 mt-3">
+                  <h1 className="text-gray-500 font-bold text-xs">
+                    {estadisticas.datosLaborales.trabajan.si} estudiante{"(s)"}
+                  </h1>
+                  <p className="text-blue-500 font-medium text-xs">
+                    SI trabajan
+                  </p>
+                </div>
+                <div className="flex gap-1 mt-3">
+                  <h1 className="text-gray-500 font-bold text-xs">
+                    {estadisticas.datosLaborales.trabajan.no} estudiante{"(s)"}
+                  </h1>
+                  <p className="text-blue-500 font-medium text-xs">
+                    NO trabajan
+                  </p>
+                </div>
+              </div>
+              <div className="bg-white p-3 mt-3 border border-gray-200 rounded-lg col-span-full">
+                <div className="flex">
+                  <h1 className="text-gray-700 font-medium text-base">
+                    Relacion trabajo/escuela
+                  </h1>
+                </div>
+                <div className="">
+                  <h1 className="text-gray-500 font-bold text-xs">
+                    {estadisticas.datosLaborales.trabajoRelacionadoEstudios.si}{" "}
+                    estudiante{"(s)"}
+                  </h1>
+                  <p className="text-blue-500 font-medium text-xs">
+                    SI tienen un trabajo relacionado a su carrera.
+                  </p>
+                </div>
+                <div className="">
+                  <h1 className="text-gray-500 font-bold text-xs">
+                    {estadisticas.datosLaborales.trabajoRelacionadoEstudios.no}{" "}
+                    estudiante{"(s)"}
+                  </h1>
+                  <p className="text-blue-500 font-medium text-xs">
+                    NO tienen un trabajo relacionado a su carrera.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
-          {/* Ingresos*/}
-          <div className="bg-white rounded-xl border border-gray-200 py-6 md:p-6 md:text-left mb-4">
-            <h1 className="font-bold text-base text-gray-400 pl-4 md:pl-10">
-              Ingresos
+          <div className="bg-white p-3 mt-4 md:mt-0 border text-gray-600 font-bol border-gray-200 rounded-lg">
+            <h1 className="text-blue-500 font-semibold text-base ml-3 mb-4">
+              Salario promedio de los estudiantes
             </h1>
             {estadisticas.datosPersonales.ingresosFamiliares.map((data) => {
               dataX.push(data.descripcionIF);
@@ -149,82 +240,10 @@ const Inicio = () => {
             />
           </div>
         </div>
-        {/* vive con ok*/}
-        <div className="md:flex flex-col md:justify-between bg-gray-200 rounded-xl border border-gray-50 py-6 md:p-6 md:text-left mb-4">
-          <h1 className="font-bold text-base text-gray-400 pl-4 md:pl-10">
-            Vive con
-          </h1>
-          <div className="flex md:justify-between">
-            {estadisticas.datosPersonales.viveCon.map((vc, i) => {
-              return (
-                <div key={i}>
-                  <h1 className="font-bold text-base text-gray-600 pl-4 md:pl-10">
-                    {vc.descripcionVC}
-                  </h1>
-                  <p className="text-md text-gray-400 pl-4 md:pl-10 md:text-center">
-                    {vc.cantidadVC}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-        {/* Datos laborales*/}
-        <div className="flex">
-          {/* Trabajan?*/}
-          <div className="md:flex flex-col md:justify-between bg-gray-200 rounded-xl border border-gray-50 py-6 md:p-6 md:text-left mb-4 w-1/2">
-            <h1 className="font-bold text-base text-gray-400 pl-4 md:pl-10 pb-4">
-              Trabajan?
-            </h1>
-            <div className="flex md:justify-between">
-              <div>
-                <h1 className="font-bold text-base text-gray-600 pl-4 md:pl-10">
-                  Si
-                </h1>
-                <p className="text-md text-gray-400 pl-4 md:pl-10 md:text-center">
-                  {estadisticas.datosLaborales.trabajan.si}
-                </p>
-              </div>
-              <div>
-                <h1 className="font-bold text-base text-gray-600 pl-4 md:pl-10">
-                  No
-                </h1>
-                <p className="text-md text-gray-400 pl-4 md:pl-10 md:text-center">
-                  {estadisticas.datosLaborales.trabajan.no}
-                </p>
-              </div>
-            </div>
-          </div>
-          {/*Trabajo relacionado?*/}
-          <div className="md:flex flex-col md:justify-between bg-gray-200 rounded-xl border border-gray-50 py-6 md:p-6 md:text-left mb-4 w-1/2">
-            <h1 className="font-bold text-base text-gray-400 pl-4 md:pl-10 pb-4">
-              Trabajo relacionado a la carrera?
-            </h1>
-            <div className="flex md:justify-between">
-              <div>
-                <h1 className="font-bold text-base text-gray-600 pl-4 md:pl-10">
-                  Si
-                </h1>
-                <p className="text-md text-gray-400 pl-4 md:pl-10 md:text-center">
-                  {estadisticas.datosLaborales.trabajoRelacionadoEstudios.si}
-                </p>
-              </div>
-              <div>
-                <h1 className="font-bold text-base text-gray-600 pl-4 md:pl-10">
-                  No
-                </h1>
-                <p className="text-md text-gray-400 pl-4 md:pl-10 md:text-center">
-                  {estadisticas.datosLaborales.trabajoRelacionadoEstudios.no}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex">
-          <div className="w-1/2">
-            <h1 className="font-bold text-base text-gray-400 pl-4 md:pl-10">
-              Bachilleratos
+        <div className="md:grid md:grid-cols-2 gap-3">
+          <div className="bg-white p-3 mt-4 md:mt-0 border gap-3 text-gray-600 font-bol border-gray-200 rounded-lg">
+            <h1 className="text-blue-500 font-semibold text-base ml-3 mb-4">
+              Principales preparatorias de las que vienen
             </h1>
             {estadisticas.datosEscolares.bachilleratos.map((data) => {
               dataXBachi.push(data.nombre);
@@ -238,8 +257,8 @@ const Inicio = () => {
               type="bar"
             />
           </div>
-          <div className="w-1/2 ml-4">
-            <h1 className="font-bold text-base text-gray-400 pl-4 md:pl-10">
+          <div className="bg-white p-3 mt-4 md:mt-0 border text-gray-600 font-bol border-gray-200 rounded-lg">
+            <h1 className="text-blue-500 font-semibold text-base ml-3 mb-4">
               Tipo de bachilleratos
             </h1>
             {estadisticas.datosEscolares.tipoBachillerato.map((data) => {
@@ -249,17 +268,17 @@ const Inicio = () => {
             <Chart
               dataX={dataYTBachi}
               dataY={dataXTBachi}
-              border="#631433"
-              bg="#6314334a"
+              border="#FF5733"
+              bg="#FF57334a"
               type="bar"
             />
           </div>
         </div>
 
-        <div className="flex mt-4 ">
-          <div className="w-1/2">
-            <h1 className="font-bold text-base text-gray-400 pl-4 md:pl-10">
-              Tsu
+        <div className="md:grid md:grid-cols-2 gap-3 mt-4">
+          <div className="bg-white p-3 mt-4 md:mt-0 border text-gray-600 font-bol border-gray-200 rounded-lg">
+            <h1 className="text-blue-500 font-semibold text-base ml-3 mb-4">
+              Promedio de estudiantes en TSU
             </h1>
             <Chart
               dataX={estadisticas.promedios.tsu.porCuatrimestre}
@@ -268,9 +287,9 @@ const Inicio = () => {
               bg="#6314334a"
             />
           </div>
-          <div className="w-1/2 ml-4">
-            <h1 className="font-bold text-base text-gray-400 pl-4 md:pl-10">
-              Ingenieria
+          <div className="bg-white p-3 mt-4 md:mt-0 border text-gray-600 font-bol border-gray-200 rounded-lg">
+            <h1 className="text-blue-500 font-semibold text-base ml-3 mb-4">
+              Promedio de estudiantes en INGENIERIA
             </h1>
             <Chart
               dataX={estadisticas.promedios.tsu.porCuatrimestre}
